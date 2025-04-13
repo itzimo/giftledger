@@ -30,6 +30,7 @@ GiftLedger/
 │ ├── main/  
 │ │ ├── java/ # Java源代码  
 │ │ │ ├── com/itzimo/giftledger/  
+│ │ │ │ ├── config # 配置文件  
 │ │ │ │ ├── controller # 控制层（Spring Boot）  
 │ │ │ │ ├── service # 业务逻辑  
 │ │ │ │ ├── model # 数据模型  
