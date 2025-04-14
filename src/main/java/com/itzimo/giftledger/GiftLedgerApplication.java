@@ -1,5 +1,6 @@
 package com.itzimo.giftledger;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -9,6 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author zimo
  * @date 2025/04/13
  */
+@MapperScan("com.itzimo.giftledger.mapper")
 @SpringBootApplication
 public class GiftLedgerApplication {
 
