@@ -1,17 +1,20 @@
 package com.itzimo.giftledger.exception;
 
+import lombok.Getter;
+
 /**
  * 全局异常类
+ *
+ * @author zimo
+ * @date 2025/04/14
  */
+@Getter
 public class GlobalException extends RuntimeException {
-    private int code;
+    private final int code;
 
     public GlobalException(int code, String message) {
         super(message);
         this.code = code;
     }
 
-    public int getCode() {
-        return code;
-    }
 }
