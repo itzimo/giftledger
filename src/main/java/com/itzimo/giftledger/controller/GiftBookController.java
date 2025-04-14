@@ -3,11 +3,12 @@ package com.itzimo.giftledger.controller;
 import com.itzimo.giftledger.common.GlobalResponse;
 import com.itzimo.giftledger.dao.GiftBooks;
 import com.itzimo.giftledger.service.GiftBooksService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.annotation.Resource;
 
 /**
  * 礼薄控制器
@@ -19,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/gift-book")
 public class GiftBookController {
 
-    @Autowired
+    @Resource
     private GiftBooksService giftBooksService;
 
     /**
