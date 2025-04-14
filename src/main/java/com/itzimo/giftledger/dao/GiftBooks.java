@@ -1,17 +1,17 @@
 package com.itzimo.giftledger.dao;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import java.time.LocalDateTime;
 import lombok.Data;
+
+import java.time.LocalDateTime;
 
 /**
  * 礼薄表
+ *
  * @TableName gift_books
  */
-@TableName(value ="gift_books")
+@TableName(value = "gift_books")
 @Data
 public class GiftBooks {
     /**

@@ -1,19 +1,19 @@
 package com.itzimo.giftledger.dao;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.Data;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import lombok.Data;
 
 /**
  * 礼薄记录表
+ *
  * @TableName gift_book_entries
  */
-@TableName(value ="gift_book_entries")
+@TableName(value = "gift_book_entries")
 @Data
 public class GiftBookEntries {
     /**
