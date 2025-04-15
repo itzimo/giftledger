@@ -1,6 +1,8 @@
 package com.itzimo.giftledger.exception;
 
 import com.itzimo.giftledger.common.GlobalResponse;
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.BindException;
@@ -8,6 +10,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import java.util.Locale;
 import java.util.Objects;
 
 /**
@@ -19,12 +22,20 @@ import java.util.Objects;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
+    private final MessageSource messageSource;
+
+    public GlobalExceptionHandler(MessageSource messageSource) {
+        this.messageSource = messageSource;
+    }
+
     /**
      * 捕获全局异常
      */
     @ExceptionHandler(Exception.class)
     public GlobalResponse<?> handleException(Exception e) {
-        return GlobalResponse.failure(500, "系统异常：" + e.getMessage());
+        Locale locale = LocaleContextHolder.getLocale(); // 获取当前语言环境
+        String message = messageSource.getMessage("error.system", new Object[]{e.getMessage()}, locale);
+        return GlobalResponse.failure(500, message);
     }
 
     /**
@@ -32,7 +43,9 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(BusinessException.class)
     public GlobalResponse<?> handleBusinessException(BusinessException e) {
-        return GlobalResponse.failure(e.getCode(), e.getMessage());
+        Locale locale = LocaleContextHolder.getLocale(); // 获取当前语言环境
+        String message = messageSource.getMessage("error.business", new Object[]{e.getMessage()}, locale);
+        return GlobalResponse.failure(e.getCode(), message);
     }
 
     /**
@@ -40,7 +53,9 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(NullPointerException.class)
     public GlobalResponse<?> handleNullPointerException(NullPointerException e) {
-        return GlobalResponse.failure(500, "空指针异常：" + e.getMessage());
+        Locale locale = LocaleContextHolder.getLocale(); // 获取当前语言环境
+        String message = messageSource.getMessage("error.null.pointer", new Object[]{e.getMessage()}, locale);
+        return GlobalResponse.failure(500, message);
     }
 
     /**
@@ -48,7 +63,9 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(DuplicateKeyException.class)
     public GlobalResponse<?> handleDuplicateKeyException(DuplicateKeyException e) {
-        return GlobalResponse.failure(500, "数据库重复主键异常：" + e.getMessage());
+        Locale locale = LocaleContextHolder.getLocale(); // 获取当前语言环境
+        String message = messageSource.getMessage("error.duplicate.key", new Object[]{e.getMessage()}, locale);
+        return GlobalResponse.failure(500, message);
     }
 
     /**
@@ -56,7 +73,9 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(IndexOutOfBoundsException.class)
     public GlobalResponse<?> handleIndexOutOfBoundsException(IndexOutOfBoundsException e) {
-        return GlobalResponse.failure(500, "索引越界异常：" + e.getMessage());
+        Locale locale = LocaleContextHolder.getLocale(); // 获取当前语言环境
+        String message = messageSource.getMessage("error.index.out.of.bounds", new Object[]{e.getMessage()}, locale);
+        return GlobalResponse.failure(500, message);
     }
 
     /**
@@ -64,7 +83,9 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public GlobalResponse<?> handleHttpMessageNotReadableException(HttpMessageNotReadableException e) {
-        return GlobalResponse.failure(400, "JSON转换异常：" + e.getMessage());
+        Locale locale = LocaleContextHolder.getLocale(); // 获取当前语言环境
+        String message = messageSource.getMessage("error.json.convert", new Object[]{e.getMessage()}, locale);
+        return GlobalResponse.failure(400, message);
     }
 
     /**
@@ -72,7 +93,9 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public GlobalResponse<?> handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
-        return GlobalResponse.failure(400, "参数校验失败：" + Objects.requireNonNull(e.getBindingResult().getFieldError()).getDefaultMessage());
+        Locale locale = LocaleContextHolder.getLocale(); // 获取当前语言环境
+        String message = messageSource.getMessage("error.parameter.validate", new Object[]{Objects.requireNonNull(e.getBindingResult().getFieldError()).getDefaultMessage()}, locale);
+        return GlobalResponse.failure(400, message);
     }
 
     /**
@@ -80,6 +103,8 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(BindException.class)
     public GlobalResponse<?> handleBindException(BindException e) {
-        return GlobalResponse.failure(400, "参数校验失败：" + Objects.requireNonNull(e.getBindingResult().getFieldError()).getDefaultMessage());
+        Locale locale = LocaleContextHolder.getLocale(); // 获取当前语言环境
+        String message = messageSource.getMessage("error.parameter.validate", new Object[]{Objects.requireNonNull(e.getBindingResult().getFieldError()).getDefaultMessage()}, locale);
+        return GlobalResponse.failure(400, message);
     }
 }

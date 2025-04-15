@@ -16,5 +16,4 @@ public class GlobalException extends RuntimeException {
         super(message);
         this.code = code;
     }
-
 }
