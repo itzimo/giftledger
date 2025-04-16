@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
  * @date 2025/04/16
  */
 @Data
-public class GiftBookGetResponse {
+public class GiftBookDTO {
     private Long id;
     /**
      * 礼薄名称

@@ -1,7 +1,7 @@
 package com.itzimo.giftledger.mapping;
 
 import com.itzimo.giftledger.model.dto.GiftBookCreateRequest;
-import com.itzimo.giftledger.model.dto.GiftBookGetResponse;
+import com.itzimo.giftledger.model.dto.GiftBookDTO;
 import com.itzimo.giftledger.model.entity.GiftBooksDO;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
@@ -23,5 +23,5 @@ public interface GiftBooksMapping {
      * @return {@link GiftBooksDO }
      */
     GiftBooksDO toDO(GiftBookCreateRequest request);
-    GiftBookGetResponse toDTO(GiftBooksDO giftBooksDO);
+    GiftBookDTO toDTO(GiftBooksDO giftBooksDO);
 }

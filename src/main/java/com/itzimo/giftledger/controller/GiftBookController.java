@@ -3,7 +3,7 @@ package com.itzimo.giftledger.controller;
 import com.itzimo.giftledger.common.GlobalResponse;
 import com.itzimo.giftledger.mapping.GiftBooksMapping;
 import com.itzimo.giftledger.model.dto.GiftBookCreateRequest;
-import com.itzimo.giftledger.model.dto.GiftBookGetResponse;
+import com.itzimo.giftledger.model.dto.GiftBookDTO;
 import com.itzimo.giftledger.model.entity.GiftBooksDO;
 import com.itzimo.giftledger.service.GiftBooksService;
 import org.springframework.validation.annotation.Validated;
@@ -31,11 +31,11 @@ public class GiftBookController {
      * @return 创建结果
      */
     @PostMapping()
-    public GlobalResponse<GiftBookGetResponse> createGiftBook(@Validated @RequestBody GiftBookCreateRequest request) {
+    public GlobalResponse<GiftBookDTO> createGiftBook(@Validated @RequestBody GiftBookCreateRequest request) {
         GiftBooksDO giftBook = GiftBooksMapping.INSTANCE.toDO(request);
         giftBook.setUserId(1L);
         giftBooksService.save(giftBook);
-        GiftBookGetResponse dto = GiftBooksMapping.INSTANCE.toDTO(giftBook);
+        GiftBookDTO dto = GiftBooksMapping.INSTANCE.toDTO(giftBook);
         return GlobalResponse.success(dto);
     }
 
@@ -46,9 +46,9 @@ public class GiftBookController {
      * @return 礼薄信息
      */
     @GetMapping()
-    public GlobalResponse<GiftBookGetResponse> getGiftBook(Long id) {
+    public GlobalResponse<GiftBookDTO> getGiftBook(Long id) {
         GiftBooksDO giftBook = giftBooksService.getById(id);
-        GiftBookGetResponse dto = GiftBooksMapping.INSTANCE.toDTO(giftBook);
+        GiftBookDTO dto = GiftBooksMapping.INSTANCE.toDTO(giftBook);
         return GlobalResponse.success(dto);
     }
 }
