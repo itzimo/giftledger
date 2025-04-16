@@ -31,11 +31,12 @@ public class GiftBookController {
      * @return 创建结果
      */
     @PostMapping()
-    public GlobalResponse<GiftBooksDO> createGiftBook(@Validated @RequestBody GiftBookCreateRequest request) {
+    public GlobalResponse<GiftBookGetResponse> createGiftBook(@Validated @RequestBody GiftBookCreateRequest request) {
         GiftBooksDO giftBook = GiftBooksMapping.INSTANCE.toDO(request);
         giftBook.setUserId(1L);
         giftBooksService.save(giftBook);
-        return GlobalResponse.success(giftBook);
+        GiftBookGetResponse dto = GiftBooksMapping.INSTANCE.toDTO(giftBook);
+        return GlobalResponse.success(dto);
     }
 
     /**
