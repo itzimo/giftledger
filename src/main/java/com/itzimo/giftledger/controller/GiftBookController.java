@@ -36,6 +36,7 @@ public class GiftBookController {
     @PostMapping("/create")
     public GlobalResponse<GiftBooksDO> createGiftBook(@Validated @RequestBody GiftBookCreateRequest request) {
         GiftBooksDO giftBook = GiftBooksMapping.INSTANCE.toDO(request);
+        giftBook.setUserId(1L);
         giftBooksService.save(giftBook);
         return GlobalResponse.success(giftBook);
     }

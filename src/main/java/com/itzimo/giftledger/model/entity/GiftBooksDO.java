@@ -33,7 +33,7 @@ public class GiftBooksDO {
     /**
      * 礼薄类型（GIVING: 随礼，RECEIVING: 收礼）
      */
-    private Object type;
+    private String type;
 
     /**
      * 创建时间

@@ -2,7 +2,7 @@ package com.itzimo.giftledger.model.dto;
 
 import lombok.Data;
 
-import javax.validation.constraints.NotBlank;
+import java.time.LocalDateTime;
 
 /**
  * 礼品簿创建请求
@@ -12,15 +12,16 @@ import javax.validation.constraints.NotBlank;
  */
 @Data
 public class GiftBookGetResponse {
+    private Long id;
     /**
      * 礼薄名称
      */
-    @NotBlank(message = "礼薄名称不能为空")
     private String name;
 
     /**
      * 礼薄类型（GIVING: 随礼，RECEIVING: 收礼）
      */
-    @NotBlank(message = "礼薄类型不能为空")
-    private Object type;
+    private String type;
+
+    private LocalDateTime createdAt;
 }

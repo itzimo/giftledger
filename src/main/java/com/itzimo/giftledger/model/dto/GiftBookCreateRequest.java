@@ -22,5 +22,5 @@ public class GiftBookCreateRequest {
      * 礼薄类型（GIVING: 随礼，RECEIVING: 收礼）
      */
     @NotBlank(message = "礼薄类型不能为空")
-    private Object type;
+    private String type;
 }
