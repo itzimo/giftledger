@@ -44,6 +44,9 @@ public class GiftBookController {
     @PostMapping("/get")
     public GlobalResponse<GiftBooks> getGiftBook(Long id) {
         GiftBooks giftBook = giftBooksService.getById(id);
+        if (giftBook == null) {
+            return GlobalResponse.failure(201, "礼薄不存在");
+        }
         return GlobalResponse.success(giftBook);
     }
 }
