@@ -1,4 +1,4 @@
-package com.itzimo.giftledger.dao;
+package com.itzimo.giftledger.model.entity;
 
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
  */
 @TableName(value = "gift_book_entries")
 @Data
-public class GiftBookEntries {
+public class GiftBookEntriesDO {
     /**
      * 记录ID
      */

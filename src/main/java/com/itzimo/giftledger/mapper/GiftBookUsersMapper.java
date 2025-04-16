@@ -1,6 +1,6 @@
 package com.itzimo.giftledger.mapper;
 
-import com.itzimo.giftledger.dao.GiftBookUsers;
+import com.itzimo.giftledger.model.entity.GiftBookUsersDO;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
@@ -9,7 +9,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 * @createDate 2025-04-14 20:38:06
 * @Entity com.itzimo.giftledger.dao.GiftBookUsers
 */
-public interface GiftBookUsersMapper extends BaseMapper<GiftBookUsers> {
+public interface GiftBookUsersMapper extends BaseMapper<GiftBookUsersDO> {
 
 }
 

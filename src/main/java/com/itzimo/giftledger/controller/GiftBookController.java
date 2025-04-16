@@ -1,12 +1,13 @@
 package com.itzimo.giftledger.controller;
 
 import com.itzimo.giftledger.common.GlobalResponse;
-import com.itzimo.giftledger.dao.GiftBooks;
+import com.itzimo.giftledger.mapping.GiftBooksMapping;
+import com.itzimo.giftledger.model.dto.GiftBookCreateRequest;
+import com.itzimo.giftledger.model.dto.GiftBookDTO;
+import com.itzimo.giftledger.model.entity.GiftBooksDO;
 import com.itzimo.giftledger.service.GiftBooksService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
@@ -26,13 +27,16 @@ public class GiftBookController {
     /**
      * 创建礼薄接口
      *
-     * @param giftBook 礼薄信息
+     * @param request 礼薄信息
      * @return 创建结果
      */
-    @PostMapping("/create")
-    public GlobalResponse<GiftBooks> createGiftBook(@RequestBody GiftBooks giftBook) {
+    @PostMapping()
+    public GlobalResponse<GiftBookDTO> createGiftBook(@Validated @RequestBody GiftBookCreateRequest request) {
+        GiftBooksDO giftBook = GiftBooksMapping.INSTANCE.toDO(request);
+        giftBook.setUserId(1L);
         giftBooksService.save(giftBook);
-        return GlobalResponse.success(giftBook);
+        GiftBookDTO dto = GiftBooksMapping.INSTANCE.toDTO(giftBook);
+        return GlobalResponse.success(dto);
     }
 
     /**
@@ -41,12 +45,10 @@ public class GiftBookController {
      * @param id 礼薄ID
      * @return 礼薄信息
      */
-    @PostMapping("/get")
-    public GlobalResponse<GiftBooks> getGiftBook(Long id) {
-        GiftBooks giftBook = giftBooksService.getById(id);
-        if (giftBook == null) {
-            return GlobalResponse.failure(201, "礼薄不存在");
-        }
-        return GlobalResponse.success(giftBook);
+    @GetMapping()
+    public GlobalResponse<GiftBookDTO> getGiftBook(Long id) {
+        GiftBooksDO giftBook = giftBooksService.getById(id);
+        GiftBookDTO dto = GiftBooksMapping.INSTANCE.toDTO(giftBook);
+        return GlobalResponse.success(dto);
     }
 }
