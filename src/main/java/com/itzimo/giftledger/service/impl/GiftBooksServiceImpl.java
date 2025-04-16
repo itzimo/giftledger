@@ -1,7 +1,7 @@
 package com.itzimo.giftledger.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.itzimo.giftledger.dao.GiftBooks;
+import com.itzimo.giftledger.model.entity.GiftBooksDO;
 import com.itzimo.giftledger.service.GiftBooksService;
 import com.itzimo.giftledger.mapper.GiftBooksMapper;
 import org.springframework.stereotype.Service;
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 * @createDate 2025-04-14 20:38:06
 */
 @Service
-public class GiftBooksServiceImpl extends ServiceImpl<GiftBooksMapper, GiftBooks>
+public class GiftBooksServiceImpl extends ServiceImpl<GiftBooksMapper, GiftBooksDO>
     implements GiftBooksService{
 
 }

@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.itzimo.giftledger.mapper.GiftBooksMapper">
 
-    <resultMap id="BaseResultMap" type="com.itzimo.giftledger.dao.GiftBooks">
+    <resultMap id="BaseResultMap" type="com.itzimo.giftledger.model.entity.GiftBooksDO">
             <id property="id" column="id" />
             <result property="userId" column="user_id" />
             <result property="name" column="name" />

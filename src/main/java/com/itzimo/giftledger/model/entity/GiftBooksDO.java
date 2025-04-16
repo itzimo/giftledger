@@ -1,4 +1,4 @@
-package com.itzimo.giftledger.dao;
+package com.itzimo.giftledger.model.entity;
 
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -7,33 +7,33 @@ import lombok.Data;
 import java.time.LocalDateTime;
 
 /**
- * 礼薄用户表
+ * 礼薄表
  *
- * @TableName gift_book_users
+ * @TableName gift_books
  */
-@TableName(value = "gift_book_users")
+@TableName(value = "gift_books")
 @Data
-public class GiftBookUsers {
+public class GiftBooksDO {
     /**
-     * 礼薄用户ID
+     * 礼薄ID
      */
     @TableId
     private Long id;
 
     /**
-     * 礼薄ID
+     * 系统用户ID
      */
-    private Long giftBookId;
+    private Long userId;
 
     /**
-     * 礼薄用户姓名
+     * 礼薄名称
      */
     private String name;
 
     /**
-     * 备注（用于区分重名用户）
+     * 礼薄类型（GIVING: 随礼，RECEIVING: 收礼）
      */
-    private String remark;
+    private Object type;
 
     /**
      * 创建时间
