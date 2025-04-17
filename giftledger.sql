@@ -1,5 +1,5 @@
 -- 创建用户表（系统用户）
-CREATE TABLE users
+CREATE TABLE sys_users
 (
     id         BIGINT PRIMARY KEY COMMENT '用户ID',
     username   VARCHAR(255) NOT NULL UNIQUE COMMENT '用户名',
